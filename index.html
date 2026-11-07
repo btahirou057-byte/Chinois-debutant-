@@ -7,16 +7,23 @@
   <style>
     body { font-family: Arial, sans-serif; background: #f4f6f8; text-align: center; padding: 30px; }
     h1 { color: #1d4ed8; margin-bottom: 5px; }
-    p { color: #555; margin-bottom: 30px; }
+    p { color: #555; margin-bottom: 20px; }
     .menu { display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto; }
     button { padding: 15px; font-size: 16px; border: 2px solid #1d4ed8; background: white; color: #1d4ed8; border-radius: 8px; font-weight: bold; cursor: pointer; }
     button:hover { background: #1d4ed8; color: white; }
+    .btn-audio { background: #10b981; color: white; border: none; font-size: 20px; margin-bottom: 30px; border-radius: 30px; padding: 15px 30px; }
+    .btn-audio:hover { background: #059669; color: white; }
   </style>
 </head>
 <body>
   <h1>Chinois Débutant</h1>
-  <p>Bienvenue ! Choisis une section :</p>
   
+  <!-- Ici, le bouton pour tester l'audio -->
+  <p>Test de la voix chinoise :</p>
+  <button class="btn-audio" onclick="jouerMot({ hanzi: '你好', audio: '' })">
+    🔊 Écouter 你好 (nǐ hǎo)
+  </button>
+
   <div class="menu">
     <button>📚 Leçons</button>
     <button>📖 Grammaire</button>
@@ -24,5 +31,8 @@
     <button>✅ Quiz</button>
     <button>🔤 Dictionnaire</button>
   </div>
+
+  <!-- On appelle le fichier audio.js ici -->
+  <script src="audio.js"></script>
 </body>
 </html>
