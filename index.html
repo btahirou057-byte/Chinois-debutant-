@@ -5,34 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chinois Débutant — FR / AR</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f4f6f8; text-align: center; padding: 30px; }
+    body { font-family: Arial, sans-serif; background: #f4f6f8; text-align: center; padding: 20px; margin: 0; }
     h1 { color: #1d4ed8; margin-bottom: 5px; }
     p { color: #555; margin-bottom: 20px; }
-    .menu { display: flex; flex-direction: column; gap: 15px; max-width: 300px; margin: 0 auto; }
-    button { padding: 15px; font-size: 16px; border: 2px solid #1d4ed8; background: white; color: #1d4ed8; border-radius: 8px; font-weight: bold; cursor: pointer; }
-    button:hover { background: #1d4ed8; color: white; }
-    .btn-audio { background: #10b981; color: white; border: none; font-size: 20px; margin-bottom: 30px; border-radius: 30px; padding: 15px 30px; }
-    .btn-audio:hover { background: #059669; color: white; }
+    
+    /* Design des cartes de mots */
+    #liste-mots { display: flex; flex-direction: column; gap: 15px; max-width: 400px; margin: 0 auto; }
+    .carte-mot { background: white; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+    .hanzi { font-size: 40px; color: #1d4ed8; margin-bottom: 5px; }
+    .pinyin { font-size: 18px; color: #666; margin-bottom: 15px; }
+    .traductions { display: flex; justify-content: space-around; font-weight: bold; margin-bottom: 15px; font-size: 18px; }
+    
+    /* Bouton Audio */
+    .btn-audio { background: #10b981; color: white; border: none; padding: 12px 20px; border-radius: 20px; font-size: 16px; cursor: pointer; width: 100%; font-weight: bold; }
+    .btn-audio:hover { background: #059669; }
   </style>
 </head>
 <body>
   <h1>Chinois Débutant</h1>
-  
-  <!-- Ici, le bouton pour tester l'audio -->
-  <p>Test de la voix chinoise :</p>
-  <button class="btn-audio" onclick="jouerMot({ hanzi: '你好', audio: '' })">
-    🔊 Écouter 你好 (nǐ hǎo)
-  </button>
+  <p>Mes 5 premiers mots (FR / AR) :</p>
 
-  <div class="menu">
-    <button>📚 Leçons</button>
-    <button>📖 Grammaire</button>
-    <button>📜 Histoires</button>
-    <button>✅ Quiz</button>
-    <button>🔤 Dictionnaire</button>
-  </div>
+  <!-- C'est ici que les mots vont s'afficher -->
+  <div id="liste-mots"></div>
 
-  <!-- On appelle le fichier audio.js ici -->
+  <!-- On charge les scripts audio et app -->
   <script src="audio.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
