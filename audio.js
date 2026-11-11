@@ -1,11 +1,19 @@
 let voixChinoise = null;
+let audioEnCours = null;
 
 function chargerVoix() {
+  if (!('speechSynthesis' in window)) return;
   const voix = speechSynthesis.getVoices();
-  voixChinoise = voix.find(v => v.lang === 'zh-CN') || voix.find(v => v.lang.startsWith('zh')) || null;
+  voixChinoise =
+    voix.find(v => v.lang === 'zh-CN') ||
+    voix.find(v => v.lang.startsWith('zh')) ||
+    null;
 }
-speechSynthesis.onvoiceschanged = chargerVoix;
-chargerVoix();
+
+if ('speechSynthesis' in window) {
+  speechSynthesis.onvoiceschanged = chargerVoix;
+  chargerVoix();
+}
 
 function parlerChinois(texte, vitesse = 0.9) {
   if (!('speechSynthesis' in window)) return;
@@ -18,10 +26,16 @@ function parlerChinois(texte, vitesse = 0.9) {
 }
 
 function jouerMot(mot) {
+  if (audioEnCours) {
+    audioEnCours.pause();
+    audioEnCours = null;
+  }
+  if ('speechSynthesis' in window) speechSynthesis.cancel();
+
   if (mot.audio && mot.audio.trim() !== "") {
-    const audio = new Audio(mot.audio);
-    audio.play().catch(() => parlerChinois(mot.hanzi));
+    audioEnCours = new Audio(mot.audio);
+    audioEnCours.play().catch(() => parlerChinois(mot.hanzi));
   } else {
     parlerChinois(mot.hanzi);
   }
-  }
+      }
